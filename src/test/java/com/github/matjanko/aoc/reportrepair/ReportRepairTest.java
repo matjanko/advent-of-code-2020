@@ -15,7 +15,7 @@ public class ReportRepairTest {
     }
 
     @Test
-    void shouldReturnCorrectValueWhenTwoNumbersSumIs2020() {
+    void shouldReturnCorrectValueWhenSumOfTwoDifferentNumbersEquals2020() {
         //given
         int[] report = new int[] { 1721, 979, 366, 299, 675, 1456 };
         int expected = 514579;
@@ -28,13 +28,26 @@ public class ReportRepairTest {
     }
 
     @Test
-    void shouldReturnCorrectValueWhenThreeNumbersSumIs2020() {
+    void shouldReturnCorrectValueWhenSumOfThreeDifferentDigitsEquals2020() {
         //given
         int[] report = new int[] { 1721, 979, 366, 299, 675, 1456 };
         int expected = 241861950;
 
         //when
         int actual = reportRepairService.getValueOfThreeNumbersMultipliedByThemselvesWitchSumIs2020(report);
+
+        //then
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldReturnZeroWhenSumOfTwoTheSameDigitsEquals2020() {
+        //given
+        int[] report = new int[] { 5, 1010, 4, 4 };
+        int expected = 0;
+
+        //when
+        int actual = reportRepairService.getValueOfTwoNumbersMultipliedByThemselvesWitchSumIs2020(report);
 
         //then
         Assertions.assertEquals(expected, actual);

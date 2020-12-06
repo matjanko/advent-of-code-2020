@@ -37,13 +37,9 @@ public class Main {
 
         System.out.println(highestSeatID);
 
-        List<BoardingPass> boardingPassesWithoutFirstAndLastRow = boardingPasses.stream()
+        List<Integer> seatIDs = boardingPasses.stream()
                 .filter(x -> x.getRow() != 0)
                 .filter(x -> x.getRow() != Plane.COLUMNS.size())
-                .collect(Collectors.toList());
-
-
-        List<Integer> seatIDs = boardingPassesWithoutFirstAndLastRow.stream()
                 .mapToInt(BoardingPass::getSeatID)
                 .boxed()
                 .sorted()

@@ -38,14 +38,20 @@ public class Main {
             }
         }
 
-        int countsSum = Math.toIntExact(
+        int countsAnyoneAnsweredYesSum = Math.toIntExact(
                 plane.getPassengerGroups().stream()
-                        .map(PassengerGroup::getNoOfAnsweredQuestions)
+                        .map(PassengerGroup::getNoOfQuestionsWhichAnyoneAnsweredYes)
                         .mapToInt(Integer::intValue)
                         .sum());
 
-        System.out.println(countsSum);
+        int countsEveryoneAnsweredYesSum = Math.toIntExact(
+                plane.getPassengerGroups().stream()
+                        .map(PassengerGroup::getNoOfQuestionsWhichEveryoneAnsweredYes)
+                        .mapToInt(Integer::intValue)
+                        .sum());
 
+
+        System.out.println(countsAnyoneAnsweredYesSum);
+        System.out.println(countsEveryoneAnsweredYesSum);
     }
-
 }
